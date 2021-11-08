@@ -1,0 +1,97 @@
+body {
+	background-color: #fff; /* hexadecimal for white */
+}
+
+h1 {
+	color: rgba(8,141,165,1); /* red, green, blue, transparency values */
+	margin-left: 100px;
+	text-shadow: 1px .5px 4px rgba(0,0,0,0.6); /* 1 transparency is none, 0.6 would be more transparency */
+		/* 1px down, .5px right, 4px Gaussian blur*/
+}
+
+.container {
+	width: 450px;
+	height: 450px;
+	background-color: #faebd7;
+	border: 2px solid black;
+	border-radius: 5%;
+}
+
+/* Selects all squares in the array */
+.container .squares:nth-child(-n+4) { /* nth-child selects all child elements in container, -n+4 starts at the beginning untl four elements are hit */
+	background-image: url("../images/icons/smileyface2.png");
+		/* the two "." mean you leave the "css" folder and enter the "project" folder, in order to access the "images" folder */
+	color: #fff;
+	float: left; /* puts squares in horizontal formation, rather than top to bottom */
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	border: 1px solid black;
+	border-radius: 25%;
+	cursor: pointer; /* changes to hand pointer when hovering over squares */
+	transition: transform .5s ease-in-out; /* combines transition property, duration, (delay), and animation style */
+}
+
+/* Selects all squares <p> in the array */
+.squares:nth-child(-n+4) p{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* trailing fonts for when a browser doesn't support the first */
+	font-size: 1.5em;
+	font-weight: 900;
+	text-align: center;
+	margin: 0;
+	text-shadow: 2px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Individually selects squares in the array */
+.squares:nth-child(1) { /* nth-child(#) targets the specific squares element in the array of squares (1-4) */
+	background: #4240ff;
+}
+
+.squares:nth-child(2) {
+	background: #ab3fdd;
+}
+
+.squares:nth-child(3) {
+	background: #ae163e;
+}
+
+.squares:nth-child(4) {
+	background: #00b200;
+}
+
+/* Hover effects -- changes smileyface2 to smileyface1, and individual colors */
+.container .squares:nth-child(-n+4):hover {
+	background-image: url("../images/icons/smileyface1.png");
+	transform: scale(.5);
+	animation-name: race;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(2.5,.2,.3,2);
+}
+
+.squares:nth-child(1):hover {
+	background: #13b4ff;
+}
+
+.squares:nth-child(2):hover {
+	background: #d861af;
+}
+
+.squares:nth-child(3):hover {
+	background: #81205f;
+}
+
+.squares:nth-child(4):hover {
+	background: #77b800;
+}
+
+/* Animation effects */
+@keyframes race { /* this defines the name of the animation, above is where it is used */
+	0%, 100% { /* 0% defines the beginning state, 100% defines the end state */
+		transform: translateY(0px);
+		background-image: url("../images/icons/smileyface1.png");
+	}
+	50% { /* this defines the animation halfway through */
+		transform: translateY(330px); /* moves image down 330px */
+	}
+}
